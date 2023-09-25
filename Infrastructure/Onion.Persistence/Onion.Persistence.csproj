@@ -6,4 +6,19 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Bogus" Version="34.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.11">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Onion.Application\Onion.Application.csproj" />
+    <ProjectReference Include="..\..\Core\Onion.Domain\Onion.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
