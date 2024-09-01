@@ -22,19 +22,107 @@ namespace Onion.Persistence.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("CategoryProduct", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
                 {
-                    b.Property<int>("CategoriesId")
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("ProductsId")
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("RoleId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetRoleClaims", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<System.Guid>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.HasKey("CategoriesId", "ProductsId");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.HasIndex("ProductsId");
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.ToTable("CategoryProduct");
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserClaims", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<System.Guid>", b =>
+                {
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ProviderKey")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ProviderDisplayName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("LoginProvider", "ProviderKey");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserLogins", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<System.Guid>", b =>
+                {
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("RoleId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("UserId", "RoleId");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetUserRoles", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Guid>", b =>
+                {
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Value")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserId", "LoginProvider", "Name");
+
+                    b.ToTable("AspNetUserTokens", (string)null);
                 });
 
             modelBuilder.Entity("Onion.Domain.Entitites.Brand", b =>
@@ -64,23 +152,23 @@ namespace Onion.Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2023, 9, 25, 13, 44, 46, 701, DateTimeKind.Local).AddTicks(1518),
+                            CreatedDate = new DateTime(2023, 10, 26, 21, 52, 42, 933, DateTimeKind.Local).AddTicks(2003),
                             IsDeleted = false,
-                            Name = "Clothing & Shoes"
+                            Name = "Home & Home"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2023, 9, 25, 13, 44, 46, 701, DateTimeKind.Local).AddTicks(1532),
+                            CreatedDate = new DateTime(2023, 10, 26, 21, 52, 42, 933, DateTimeKind.Local).AddTicks(2031),
                             IsDeleted = false,
-                            Name = "Books"
+                            Name = "Home, Electronics & Clothing"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedDate = new DateTime(2023, 9, 25, 13, 44, 46, 701, DateTimeKind.Local).AddTicks(1557),
+                            CreatedDate = new DateTime(2023, 10, 26, 21, 52, 42, 933, DateTimeKind.Local).AddTicks(2039),
                             IsDeleted = true,
-                            Name = "Grocery, Toys & Garden"
+                            Name = "Jewelery"
                         });
                 });
 
@@ -116,7 +204,7 @@ namespace Onion.Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2023, 9, 25, 13, 44, 46, 701, DateTimeKind.Local).AddTicks(5830),
+                            CreatedDate = new DateTime(2023, 10, 26, 21, 52, 42, 933, DateTimeKind.Local).AddTicks(4482),
                             IsDeleted = false,
                             Name = "Elektrik",
                             ParentId = 0,
@@ -125,7 +213,7 @@ namespace Onion.Persistence.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2023, 9, 25, 13, 44, 46, 701, DateTimeKind.Local).AddTicks(5832),
+                            CreatedDate = new DateTime(2023, 10, 26, 21, 52, 42, 933, DateTimeKind.Local).AddTicks(4484),
                             IsDeleted = false,
                             Name = "Moda",
                             ParentId = 0,
@@ -134,7 +222,7 @@ namespace Onion.Persistence.Migrations
                         new
                         {
                             Id = 3,
-                            CreatedDate = new DateTime(2023, 9, 25, 13, 44, 46, 701, DateTimeKind.Local).AddTicks(5834),
+                            CreatedDate = new DateTime(2023, 10, 26, 21, 52, 42, 933, DateTimeKind.Local).AddTicks(4486),
                             IsDeleted = false,
                             Name = "Bilgisayar",
                             ParentId = 1,
@@ -143,7 +231,7 @@ namespace Onion.Persistence.Migrations
                         new
                         {
                             Id = 4,
-                            CreatedDate = new DateTime(2023, 9, 25, 13, 44, 46, 701, DateTimeKind.Local).AddTicks(5835),
+                            CreatedDate = new DateTime(2023, 10, 26, 21, 52, 42, 933, DateTimeKind.Local).AddTicks(4487),
                             IsDeleted = false,
                             Name = "Kadın",
                             ParentId = 2,
@@ -187,28 +275,28 @@ namespace Onion.Persistence.Migrations
                         {
                             Id = 1,
                             CategoryId = 1,
-                            CreatedDate = new DateTime(2023, 9, 25, 13, 44, 46, 704, DateTimeKind.Local).AddTicks(8183),
-                            Description = "Deleniti çarpan öyle magnam quaerat.",
+                            CreatedDate = new DateTime(2023, 10, 26, 21, 52, 42, 934, DateTimeKind.Local).AddTicks(9396),
+                            Description = "Batarya filmini de modi yapacakmış.",
                             IsDeleted = false,
-                            Title = "Laboriosam."
+                            Title = "Quia."
                         },
                         new
                         {
                             Id = 2,
                             CategoryId = 3,
-                            CreatedDate = new DateTime(2023, 9, 25, 13, 44, 46, 704, DateTimeKind.Local).AddTicks(8226),
-                            Description = "Quasi gazete alias blanditiis minima.",
+                            CreatedDate = new DateTime(2023, 10, 26, 21, 52, 42, 934, DateTimeKind.Local).AddTicks(9443),
+                            Description = "Ekşili voluptatem eius consectetur ekşili.",
                             IsDeleted = true,
-                            Title = "Beğendim sequi."
+                            Title = "Şafak quia."
                         },
                         new
                         {
                             Id = 3,
                             CategoryId = 4,
-                            CreatedDate = new DateTime(2023, 9, 25, 13, 44, 46, 704, DateTimeKind.Local).AddTicks(8257),
-                            Description = "İure sarmal gazete beatae karşıdakine.",
+                            CreatedDate = new DateTime(2023, 10, 26, 21, 52, 42, 934, DateTimeKind.Local).AddTicks(9471),
+                            Description = "Nihil laudantium yapacakmış eius sevindi.",
                             IsDeleted = false,
-                            Title = "Adanaya."
+                            Title = "Consequuntur."
                         });
                 });
 
@@ -254,37 +342,192 @@ namespace Onion.Persistence.Migrations
                         {
                             Id = 1,
                             BrandId = 1,
-                            CreatedDate = new DateTime(2023, 9, 25, 13, 44, 46, 707, DateTimeKind.Local).AddTicks(9769),
-                            Description = "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016",
-                            Discount = 9.468234109436280m,
+                            CreatedDate = new DateTime(2023, 10, 26, 21, 52, 42, 937, DateTimeKind.Local).AddTicks(5435),
+                            Description = "Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support",
+                            Discount = 8.376413655820520m,
                             IsDeleted = false,
-                            Price = 404.54m,
-                            Title = "Ergonomic Cotton Soap"
+                            Price = 748.46m,
+                            Title = "Licensed Rubber Tuna"
                         },
                         new
                         {
                             Id = 2,
                             BrandId = 3,
-                            CreatedDate = new DateTime(2023, 9, 25, 13, 44, 46, 707, DateTimeKind.Local).AddTicks(9804),
-                            Description = "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016",
-                            Discount = 6.623901796389620m,
+                            CreatedDate = new DateTime(2023, 10, 26, 21, 52, 42, 937, DateTimeKind.Local).AddTicks(5466),
+                            Description = "New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart",
+                            Discount = 7.653836078217210m,
                             IsDeleted = false,
-                            Price = 548.67m,
-                            Title = "Intelligent Granite Pizza"
+                            Price = 533.46m,
+                            Title = "Intelligent Granite Towels"
                         });
                 });
 
-            modelBuilder.Entity("CategoryProduct", b =>
+            modelBuilder.Entity("Onion.Domain.Entitites.ProductCategory", b =>
                 {
-                    b.HasOne("Onion.Domain.Entitites.Category", null)
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ProductId", "CategoryId");
+
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("ProductCategories");
+                });
+
+            modelBuilder.Entity("Onion.Domain.Entitites.Role", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedName")
+                        .IsUnique()
+                        .HasDatabaseName("RoleNameIndex")
+                        .HasFilter("[NormalizedName] IS NOT NULL");
+
+                    b.ToTable("AspNetRoles", (string)null);
+                });
+
+            modelBuilder.Entity("Onion.Domain.Entitites.User", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("RefreshToken")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("RefreshTokenExpiryTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedEmail")
+                        .HasDatabaseName("EmailIndex");
+
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasDatabaseName("UserNameIndex")
+                        .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.ToTable("AspNetUsers", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
+                {
+                    b.HasOne("Onion.Domain.Entitites.Role", null)
                         .WithMany()
-                        .HasForeignKey("CategoriesId")
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<System.Guid>", b =>
+                {
+                    b.HasOne("Onion.Domain.Entitites.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<System.Guid>", b =>
+                {
+                    b.HasOne("Onion.Domain.Entitites.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<System.Guid>", b =>
+                {
+                    b.HasOne("Onion.Domain.Entitites.Role", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Onion.Domain.Entitites.Product", null)
+                    b.HasOne("Onion.Domain.Entitites.User", null)
                         .WithMany()
-                        .HasForeignKey("ProductsId")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Guid>", b =>
+                {
+                    b.HasOne("Onion.Domain.Entitites.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -311,9 +554,35 @@ namespace Onion.Persistence.Migrations
                     b.Navigation("Brand");
                 });
 
+            modelBuilder.Entity("Onion.Domain.Entitites.ProductCategory", b =>
+                {
+                    b.HasOne("Onion.Domain.Entitites.Category", "Category")
+                        .WithMany("ProductCategories")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Onion.Domain.Entitites.Product", "Product")
+                        .WithMany("ProductCategories")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("Onion.Domain.Entitites.Category", b =>
                 {
                     b.Navigation("Details");
+
+                    b.Navigation("ProductCategories");
+                });
+
+            modelBuilder.Entity("Onion.Domain.Entitites.Product", b =>
+                {
+                    b.Navigation("ProductCategories");
                 });
 #pragma warning restore 612, 618
         }

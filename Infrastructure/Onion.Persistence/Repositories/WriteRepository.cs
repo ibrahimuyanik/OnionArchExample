@@ -1,11 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Onion.Application.Interfaces.Repositories;
 using Onion.Domain.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Onion.Persistence.Repositories
 {
@@ -42,8 +37,9 @@ namespace Onion.Persistence.Repositories
             await Task.Run(() => Table.Remove(entity));
         }
 
-      
-
-       
+        public async Task HardDeleteRangeAsync(IList<T> entities)
+        {
+            await Task.Run(() => Table.RemoveRange(entities));
+        }
     }
 }

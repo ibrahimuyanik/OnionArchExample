@@ -9,15 +9,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{42ECFD4F-9D7D-4CE1-9075-B2266F64A95C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Onion.Application", "Core\Onion.Application\Onion.Application.csproj", "{7F777901-C38E-4F8A-B585-D1C1C3DFE1EA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Onion.Application", "Core\Onion.Application\Onion.Application.csproj", "{7F777901-C38E-4F8A-B585-D1C1C3DFE1EA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Onion.Domain", "Core\Onion.Domain\Onion.Domain.csproj", "{F8A69536-49FD-44E6-9FB9-6B50CF522CD9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Onion.Domain", "Core\Onion.Domain\Onion.Domain.csproj", "{F8A69536-49FD-44E6-9FB9-6B50CF522CD9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Onion.Infrastructure", "Infrastructure\Onion.Infrastructure\Onion.Infrastructure.csproj", "{61B0359C-C7B7-4B2C-80EA-294B82DEBCAE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Onion.Infrastructure", "Infrastructure\Onion.Infrastructure\Onion.Infrastructure.csproj", "{61B0359C-C7B7-4B2C-80EA-294B82DEBCAE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Onion.Persistence", "Infrastructure\Onion.Persistence\Onion.Persistence.csproj", "{10552E45-066D-4C66-BC39-8B40E09D42F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Onion.Persistence", "Infrastructure\Onion.Persistence\Onion.Persistence.csproj", "{10552E45-066D-4C66-BC39-8B40E09D42F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnionAPI", "Presentation\OnionAPI\OnionAPI.csproj", "{80E5AC19-FA6C-4BB2-8295-4003CFB3118A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnionAPI", "Presentation\OnionAPI\OnionAPI.csproj", "{80E5AC19-FA6C-4BB2-8295-4003CFB3118A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Onion.Mapper", "Core\Onion.Mapper\Onion.Mapper.csproj", "{C6FA3B09-34AE-42E6-86E5-D77908D9B1A6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{80E5AC19-FA6C-4BB2-8295-4003CFB3118A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{80E5AC19-FA6C-4BB2-8295-4003CFB3118A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{80E5AC19-FA6C-4BB2-8295-4003CFB3118A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6FA3B09-34AE-42E6-86E5-D77908D9B1A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6FA3B09-34AE-42E6-86E5-D77908D9B1A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6FA3B09-34AE-42E6-86E5-D77908D9B1A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6FA3B09-34AE-42E6-86E5-D77908D9B1A6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,6 +61,7 @@ Global
 		{61B0359C-C7B7-4B2C-80EA-294B82DEBCAE} = {B0D6FBC4-2BB9-4F83-BB4C-EF1B7A8084EB}
 		{10552E45-066D-4C66-BC39-8B40E09D42F2} = {B0D6FBC4-2BB9-4F83-BB4C-EF1B7A8084EB}
 		{80E5AC19-FA6C-4BB2-8295-4003CFB3118A} = {42ECFD4F-9D7D-4CE1-9075-B2266F64A95C}
+		{C6FA3B09-34AE-42E6-86E5-D77908D9B1A6} = {DBD315FE-9112-445F-88AD-057A7163CCB5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C81DDB75-CAA1-42B5-BA2C-1636366C5EC4}

@@ -2,12 +2,7 @@
 using Microsoft.EntityFrameworkCore.Query;
 using Onion.Application.Interfaces.Repositories;
 using Onion.Domain.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Onion.Persistence.Repositories
 {
@@ -34,7 +29,6 @@ namespace Onion.Persistence.Repositories
             return await queryable.ToListAsync(); // sıralama yapılmayacaksa diğer şartlara göre sorgu oluşturulacak ve listelenecek
         }
 
-
         public async Task<IList<T>> GetAllByPagingAsync(Expression<Func<T, bool>>? predicate = null, Func<IQueryable<T>, IIncludableQueryable<T, object>>? include = null, Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null, bool enableTracking = false, int currentPage = 1, int pageSize = 3)
         {
             IQueryable<T> queryable = Table;
@@ -47,7 +41,6 @@ namespace Onion.Persistence.Repositories
             return await queryable.Skip((currentPage - 1) * pageSize).Take(pageSize).ToListAsync();
         }
 
-
         public async Task<T> GetAsync(Expression<Func<T, bool>> predicate, Func<IQueryable<T>, IIncludableQueryable<T, object>>? include = null, bool enableTracking = false)
         {
             IQueryable<T> queryable = Table;
@@ -57,7 +50,6 @@ namespace Onion.Persistence.Repositories
 
             return await queryable.FirstOrDefaultAsync(predicate);
         }
-
 
         public async Task<int> CountAsync(Expression<Func<T, bool>>? predicate = null)
         {
@@ -71,11 +63,5 @@ namespace Onion.Persistence.Repositories
             if (!enableTracking) Table.AsNoTracking();
             return Table.Where(predicate);
         }
-
-        
-
-       
-
-       
     }
 }

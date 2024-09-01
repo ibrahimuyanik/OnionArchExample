@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Onion.Domain.Entitites;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Onion.Persistence.Context
 {
-    public class AppDbContext: DbContext
+    public class AppDbContext: IdentityDbContext<User, Role, Guid>
     {
         public AppDbContext() { }
 
@@ -21,6 +22,7 @@ namespace Onion.Persistence.Context
         public DbSet<Category> Categories { get; set; }
         public DbSet<Detail> Details { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<ProductCategory> ProductCategories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

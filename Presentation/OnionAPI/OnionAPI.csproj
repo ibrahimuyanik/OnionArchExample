@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MediatR" Version="12.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.11" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.11">
       <PrivateAssets>all</PrivateAssets>
@@ -16,10 +17,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Onion.Mapper\Onion.Mapper.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Onion.Infrastructure\Onion.Infrastructure.csproj" />
     <ProjectReference Include="..\..\Infrastructure\Onion.Persistence\Onion.Persistence.csproj" />
   </ItemGroup>
 
