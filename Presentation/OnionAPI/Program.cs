@@ -3,7 +3,7 @@ using Onion.Application;
 using Onion.Mapper;
 using Onion.Application.Exceptions;
 using Onion.Infrastructure;
-using Microsoft.OpenApi.Models;
+using Microsoft.OpenApi.Models;  
 
 var builder = WebApplication.CreateBuilder(args);
 
